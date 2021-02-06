@@ -1,5 +1,5 @@
 package codigos;
 
 public class Globals {
-	int [] a = new int[10];
+	public static int [] a = new int[10];
 }

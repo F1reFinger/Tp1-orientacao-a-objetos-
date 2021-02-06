@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class app {
     public static void main(String args[]){
-        int escolha = 10, flag = 0;
+        int escolha = 10;
         ValidaData validador = new ValidaData();
         Entradas insere = new Entradas();
+        Globals var = new Globals();
 
 
         while(escolha != 0) {
@@ -15,7 +16,7 @@ public class app {
             System.out.println("2 - Calculo de Temperatura media.");
             System.out.println("3 - calculo de temperatura minima.");
             System.out.println("4 - Calculo de temperatura maxima.");
-            System.out.println("5 relatorio meteorologico.");
+            System.out.println("5 - relatorio meteorologico.");
             System.out.println("0 - Sair");
 
             Scanner leitura = new Scanner(System.in);
@@ -30,7 +31,7 @@ public class app {
                         Entradas.EntradaTemp();
                         break;
                     case 2:
-                        System.out.println("Media:" + insere.Media());
+                        insere.Media();
                         break;
                 }
             }

@@ -11,18 +11,19 @@ public class Entradas {
         	Scanner ler = new Scanner(System.in);
 
         	for(int i = 0; i < 10; i++){
-            		System.out.println("Digite a temperatura do dia:\n");
+            		System.out.println("Digite a temperatura do dia:");
 				benner.a[i] = ler.nextInt();
         	}
     	}
 
-    	public static int Media(){
+    	public static void Media(){
 			Globals bruce = new Globals();
 			int soma = 0;
-			Entradas.EntradaTemp();
 			for(int i = 0; i < 10; i++){
 				soma += bruce.a[i];
+				System.out.println("soma =" + soma);
 			}
-			return soma/10;
+			soma = soma/10;
+			System.out.println("Soma =" + soma);
 		}
 }
