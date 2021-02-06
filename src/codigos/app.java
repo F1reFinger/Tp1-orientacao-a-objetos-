@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 public class app {
     public static void main(String args[]){
-        int escolha = 10;
+        int escolha = 10, flag = 0;
         ValidaData validador = new ValidaData();
+        Entradas insere = new Entradas();
 
 
         while(escolha != 0) {
@@ -22,13 +23,16 @@ public class app {
 
 
             if(escolha < 0 || escolha > 5){
-                System.out.println("Não consigo identificar sua escolha");
+                System.out.println("Não consigo identificar sua escolha\n\n");
             }else{
                 switch (escolha){
                     case 1:
-                        validador.Validetor();
+                        Entradas.EntradaTemp();
+                        break;
+                    case 2:
+                        System.out.println("Media:" + insere.Media());
+                        break;
                 }
-
             }
 
         }
