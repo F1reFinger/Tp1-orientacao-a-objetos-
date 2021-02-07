@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class app {
     public static void main(String args[]){
         //variáveis de funcionamento do menu e de operações necessarias como busca;
-        int escolha = 10, flag = 0, caca_ano, caca_mes;
+        int escolha = 10, flag = 0;
 
         //entradas de funções atravez de arquivos se comunicam com a main;
         ValidaData validador = new ValidaData();
@@ -34,15 +34,15 @@ public class app {
                 switch (escolha){
                     case 1:
                         //case 1 valida uma data e tbm valida a entrada de temperatura
-                        flag = validador.Validetor(1, var.mes, var.ano);
-                        while(flag == 0 || flag == 1){
-                            flag = validador.Validetor(var.dia, var.mes, var.ano);
-                            if(flag == 0 || flag == 1){
+                        Globals.tipo = validador.Validetor(1, var.mes, var.ano);
+                        while(Globals.tipo == 0 || Globals.tipo == 1){
+                            Globals.tipo = validador.Validetor(1, var.mes, var.ano);
+                            if(Globals.tipo == 0 || Globals.tipo == 1){
                                 System.out.println("Algo de errado aconteceu por favor reinsira os valores!");
-                                flag = validador.Validetor(var.dia, var.mes, var.ano);
+                                Globals.tipo = validador.Validetor(1, var.mes, var.ano);
                             }
                         }
-                        switch (flag){
+                        switch (Globals.tipo){
                             case 2:
                                 flag = Ano.Fevereiro(2);
                                 break;
@@ -61,17 +61,31 @@ public class app {
                     case 2:
                         //case 2 valida o mes e o ano em questão pra procurar e calcular a media do ano;
                         Scanner ler = new Scanner(System.in);
-                        System.out.println("Digite o mes em seguida o ano");
-                        caca_mes = leitura.nextInt();
-                        caca_ano = leitura.nextInt();
-                        flag = validador.MesAno();
-
-                        System.out.println("media: " + insere.Media(flag));
+                        Globals.media = insere.Media(flag);
+                        System.out.println("media: " + Globals.media);
                         break;
 
                     case 3:
-                        System.out.println("não ta pronto ainda");
+                        insere.MediaMin(flag);
+                        System.out.println("Minimas:");
+                        for(int i = 0; i < flag; i++){
+                            if(Globals.minimos[i] == 1){
+                                System.out.println("Dia:" + (i+1) + " Minima: " + Globals.a[i]);
+                            }
+                        }
                         break;
+                    case 4:
+                        insere.MediaMax(flag);
+                        System.out.println("Maximas:");
+                        for(int i = 0; i < flag; i++){
+                            if(Globals.maximos[i] == 1){
+                                System.out.println("Dia:" + (i+1) + " Maxima: " + Globals.a[i]);
+                            }
+                        }
+                        break;
+                    case 5:
+                        insere.Relatorio(flag);
+
                 }
             }
 

@@ -7,8 +7,6 @@ public class ValidaData {
     public static int Validetor(int dia, int mes, int ano){
 
         Scanner ler = new Scanner(System.in);
-        System.out.println("Digite o dia:\n");
-        dia = ler.nextInt();
         System.out.println("Digite o mes:\n");
         mes = ler.nextInt();
         System.out.println("Digite o ano:\n");
@@ -18,21 +16,17 @@ public class ValidaData {
             // Data Válida
             if (mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 10 || mes == 12) {
                 if (dia >= 1 && dia <= 31) {
-                    System.out.println("Data Válida. A data digitada foi: " + dia + "/" + mes + "/" + ano);
                     //5 mes com 31 dias
                     return 5;
                 } else {
                     // Dia inválido
-                    System.out.println("Data Inválida");
                     return 0;
                 }
             } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
                 if (dia >= 1 && dia <= 30) {
-                    System.out.println("Data Válida. A data digitada foi: " + dia + "/" + mes + "/" + ano);
                     return 4;
                 } else {
                     // Dia inválido
-                    System.out.println("Data Inválida");
                     return 0;
                 }
             } else if (mes == 2) {
@@ -40,18 +34,17 @@ public class ValidaData {
                 // se fevereiro tem 28 ou 29 dias.
                 if (((ano % 4 == 0) && (ano % 100 != 0)) || (ano % 400 == 0)) {
                     if (dia >= 1 && dia <= 29) {
-                        System.out.println("Data Válida. A data digitada foi: " + dia + "/" + mes + "/" + ano);
                         return 3;
                     } else {
-                        System.out.println("Data Inválida");
+                        // mes invalido
                         return 0;
                     }
                 } else {
                     if (dia >= 1 && dia <= 28) {
-                        System.out.println("Data Válida. A data digitada foi: " + dia + "/" + mes + "/" + ano);
+                        // 2 significa que o mês ta válido mas que tem 28 dias
                         return 2;
                     } else {
-                        System.out.println("Data Inválida");
+                        //invalido
                         return 0;
                     }
                 }
@@ -59,7 +52,6 @@ public class ValidaData {
             }
         } else{
             // Mes invalido
-            System.out.println("Data Inválida");
             return 0;
         }
         return 1;
