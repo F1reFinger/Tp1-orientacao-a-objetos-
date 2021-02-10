@@ -96,10 +96,16 @@ public class app {
                         Globals.verifica = lido.nextInt();
                         System.out.println("Digite o ano a ser relatado:");
                         Globals.verificados = lido.nextInt();
-                        if(Globals.verifica != Globals.mes || Globals.verificados != Globals.ano){
+                        if(Globals.verifica == Globals.mes && Globals.verificados == Globals.ano){
+                            System.out.println("Safado entrou no if");
+                            insere.Relatorio(flag,false);
+                        }
+                        else if(Globals.verifica != Globals.mes || Globals.verificados != Globals.ano){
+                            System.out.println("Safado ta no else");
                             Globals.mes = Globals.verifica;
                             Globals.ano = Globals.verificados;
                             Globals.tipo = validador.Validetor(2, var.mes, var.ano);
+
                             switch (Globals.tipo){
                                 case 2:
                                     flag = Ano.Fevereiro(2);
@@ -114,16 +120,11 @@ public class app {
                                     flag = Ano.MesMaior();
                             }
                             insere.Relatorio(flag,true);
-
-                        }
-                        else{
-                            insere.Relatorio(flag,false);
                         }
 
 
                 }
             }
-
         }
     }
 }
