@@ -1,22 +1,23 @@
 package codigos;
 
 import java.util.*;
+import java.util.Random;
 
 public class Entradas {
 
-	public static void EntradaTemp(int flag){
+	public static void EntradaTemp(int flag, int mes){
 
         	Scanner ler = new Scanner(System.in);
 
         	for(int i = 0; i < flag; i++){
             		System.out.println("Digite a temperatura do dia " + (i+1) + ":");
-					Globals.a[i] = ler.nextInt();
+					Globals.a[mes][i] = ler.nextInt();
 
-					if(Globals.a[i] < Globals.minimo){
-						Globals.minimo = Globals.a[i];
+					if(Globals.a[mes][i] < Globals.minimo){
+						Globals.minimo = Globals.a[mes][i];
 					}
-					if(Globals.a[i] > Globals.maxima){
-						Globals.maxima = Globals.a[i];
+					if(Globals.a[mes][i] > Globals.maxima){
+						Globals.maxima = Globals.a[mes][i];
 					}
         	}
     	}
@@ -26,14 +27,14 @@ public class Entradas {
 			Globals bruce = new Globals();
 			Globals.soma = 0;
 			for(int i = 0; i < tam; i++){
-				Globals.soma += bruce.a[i];
+				Globals.soma += bruce.a[Globals.mes][i];
 			}
 			return Globals.soma/tam;
 		}
 
 		public static void MediaMin(int tam){
 					for(int i = 0; i < tam; i++){
-						if(Globals.a[i] <= Globals.minimo) {
+						if(Globals.a[Globals.mes][i] <= Globals.minimo) {
 							Globals.minimos[i] = 1;
 						}
 						else{
@@ -44,8 +45,8 @@ public class Entradas {
 
 		public static void MediaMax(int tam){
 			for(int i = 0; i < tam; i++){
-				if(Globals.a[i] >= Globals.maxima) {
-					Globals.maximos[i] = 1;
+				if(Globals.a[Globals.mes][i] >= Globals.maxima) {
+					Globals.maximos [i] = 1;
 				}
 				else{
 					Globals.maximos [i] = 0;
@@ -53,23 +54,44 @@ public class Entradas {
 			}
 		}
 
-		public static void Relatorio(int tam){
+		public static void Relatorio(int tam, boolean genis){
+			if(genis){
+				Generator(tam);
+			}
+
 			for(int i = 0; i < tam; i++){
-				System.out.println("Dia:" + (i+1) + " Media Diaria: " + Globals.a[i]);
+				Globals.media = Media(tam);
+				System.out.println("Dia:" + (i+1) + " Media Diaria: " + Globals.a[Globals.mes][i]);
 			}
 			System.out.println("Minimas:");
+			MediaMin(tam);
 			for(int i = 0; i < tam; i++){
 				if(Globals.minimos[i] == 1){
-					System.out.println("Dia:" + (i+1) + " Minima: " + Globals.a[i]);
+					System.out.println("Dia:" + (i+1) + " Minima: " + Globals.a[Globals.mes][i]);
 				}
 			}
 			System.out.println("Maximas:");
+			MediaMax(tam);
 			for(int i = 0; i < tam; i++){
 				if(Globals.maximos[i] == 1){
-					System.out.println("Dia:" + (i+1) + " Maxima: " + Globals.a[i]);
+					System.out.println("Dia:" + (i+1) + " Maxima: " + Globals.a[Globals.mes][i]);
 				}
 			}
 			System.out.println("Media Mensal:" + Globals.media);
 
+		}
+
+		public static void Generator(int flag){
+			Random rand = new Random();
+			System.out.println("flag: " + flag);
+			for(int i = 0; i < flag; i++){
+				Globals.a[Globals.mes][i] = rand.nextInt(31);
+				if(Globals.a[Globals.mes][i] < Globals.minimo){
+					Globals.minimo = Globals.a[Globals.mes][i];
+				}
+				if(Globals.a[Globals.mes][i] > Globals.maxima){
+					Globals.maxima = Globals.a[Globals.mes][i];
+				}
+			}
 		}
 }

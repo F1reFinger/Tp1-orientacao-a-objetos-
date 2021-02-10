@@ -1,5 +1,7 @@
 package codigos;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Scanner;
 
 public class app {
@@ -12,6 +14,11 @@ public class app {
         Entradas insere = new Entradas();
         Globals var = new Globals();
         Ano data = new Ano();
+
+        Component frame = null;
+
+        JOptionPane.showMessageDialog(frame, "Obs caso a opção selecionada não contenha dados eles serão gerados automaticamente" +
+                " para continuar clique em ok.");
 
         //rodando o menu até o ususario decidir desistir;
         while(escolha != 0) {
@@ -55,7 +62,7 @@ public class app {
                             case 5:
                                 flag = Ano.MesMaior();
                         }
-                        Entradas.EntradaTemp(flag);
+                        Entradas.EntradaTemp(flag, Globals.mes);
                         break;
 
                     case 2:
@@ -70,7 +77,7 @@ public class app {
                         System.out.println("Minimas:");
                         for(int i = 0; i < flag; i++){
                             if(Globals.minimos[i] == 1){
-                                System.out.println("Dia:" + (i+1) + " Minima: " + Globals.a[i]);
+                                System.out.println("Dia:" + (i+1) + " Minima: " + Globals.a[Globals.mes][i]);
                             }
                         }
                         break;
@@ -79,12 +86,40 @@ public class app {
                         System.out.println("Maximas:");
                         for(int i = 0; i < flag; i++){
                             if(Globals.maximos[i] == 1){
-                                System.out.println("Dia:" + (i+1) + " Maxima: " + Globals.a[i]);
+                                System.out.println("Dia:" + (i+1) + " Maxima: " + Globals.a[Globals.mes][i]);
                             }
                         }
                         break;
                     case 5:
-                        insere.Relatorio(flag);
+                        Scanner lido = new Scanner(System.in);
+                        System.out.println("Digite o mes a ser relatado:");
+                        Globals.verifica = lido.nextInt();
+                        System.out.println("Digite o ano a ser relatado:");
+                        Globals.verificados = lido.nextInt();
+                        if(Globals.verifica != Globals.mes || Globals.verificados != Globals.ano){
+                            Globals.mes = Globals.verifica;
+                            Globals.ano = Globals.verificados;
+                            Globals.tipo = validador.Validetor(2, var.mes, var.ano);
+                            switch (Globals.tipo){
+                                case 2:
+                                    flag = Ano.Fevereiro(2);
+                                    break;
+                                case 3:
+                                    flag = Ano.Fevereiro(3);
+                                    break;
+                                case 4:
+                                    flag = Ano.MesMedio();
+                                    break;
+                                case 5:
+                                    flag = Ano.MesMaior();
+                            }
+                            insere.Relatorio(flag,true);
+
+                        }
+                        else{
+                            insere.Relatorio(flag,false);
+                        }
+
 
                 }
             }
