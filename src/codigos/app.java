@@ -15,8 +15,8 @@ public class app {
 
         Component frame = null;
 
-        JOptionPane.showMessageDialog(frame, "Obs caso a opção selecionada não contenha dados eles serão gerados automaticamente." +
-                " para continuar clique em ok.");
+        JOptionPane.showMessageDialog(frame, "Obs Algumas opções podem gerar dados e outras não responderão bem quando solicitado dados inexistentes." +
+                " Caso haja problemas consulte readme ou manual.txt. para continuar clique em ok.");
 
         //rodando o menu até o ususario decidir desistir;
         while(escolha != 0) {
@@ -26,7 +26,6 @@ public class app {
             System.out.println("3 - calculo de temperatura minima.");
             System.out.println("4 - Calculo de temperatura maxima.");
             System.out.println("5 - relatorio meteorologico.");
-            System.out.println("6 - Geração aleatoria de temperatura");
             System.out.println("0 - Sair");
 
             //escaneia a operação desejada pelo usuário
@@ -90,9 +89,6 @@ public class app {
                         break;
                     case 5:
 
-                        JOptionPane.showMessageDialog(frame, "Obs: essa opção pode apagar ou inserir alguns dados aleatorios para mais informações consulte readme ou manual.txt." +
-                                " se está ciente clique em ok.");
-
                         Scanner lido = new Scanner(System.in);
                         System.out.println("Digite o mes a ser relatado:");
                         Globals.verifica = lido.nextInt();
@@ -123,36 +119,11 @@ public class app {
                             }
                             Globals.minimo = 100;
                             Globals.maxima = -100;
-                            insere.Relatorio(flag,true);
-                        }
+                            insere.Relatorio(flag, true);
                             break;
-                            case 6:
-                                Scanner leitor = new Scanner(System.in);
-                                System.out.println("Digite o mes e o ano a ser gerado respectivamente:");
-                                Globals.verifica = leitor.nextInt();
-                                Globals.verificados = leitor.nextInt();
+                        }
 
-                                    Globals.mes = Globals.verifica;
-                                    Globals.ano = Globals.verificados;
-                                    Globals.tipo = validador.Validetor(2, Globals.mes, Globals.ano);
 
-                                    switch (Globals.tipo){
-                                        case 2:
-                                            flag = Ano.Fevereiro(2);
-                                            break;
-                                        case 3:
-                                            flag = Ano.Fevereiro(3);
-                                            break;
-                                        case 4:
-                                            flag = Ano.MesMedio();
-                                            break;
-                                        case 5:
-                                            flag = Ano.MesMaior();
-                                    }
-                                    Globals.minimo = 100;
-                                    Globals.maxima = -100;
-                                    insere.Relatorio(flag, true);
-                                break;
 
                 }
             }
