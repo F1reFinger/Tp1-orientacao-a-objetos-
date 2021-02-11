@@ -1,7 +1,5 @@
 package codigos;
 
-import java.util.ArrayList;
-
 public class Ano {
 	public static int MesMaior(){
 	    System.out.println("Meses com 31 dias");

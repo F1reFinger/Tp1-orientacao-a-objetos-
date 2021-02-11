@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class app {
     public static void main(String args[]){
         //variáveis de funcionamento do menu e de operações necessarias como busca;
-        int escolha = 10, flag = 0;
+        int escolha = 10, flag = 0, valideiro, validado;
 
         //entradas de funções atravez de arquivos se comunicam com a main;
         ValidaData validador = new ValidaData();
@@ -41,12 +41,12 @@ public class app {
                 switch (escolha){
                     case 1:
                         //case 1 valida uma data e tbm valida a entrada de temperatura
-                        Globals.tipo = validador.Validetor(1, var.mes, var.ano);
+                        Globals.tipo = validador.Validetor(1, Globals.mes, Globals.ano);
                         while(Globals.tipo == 0 || Globals.tipo == 1){
-                            Globals.tipo = validador.Validetor(1, var.mes, var.ano);
+                            Globals.tipo = validador.Validetor(1, Globals.mes, Globals.ano);
                             if(Globals.tipo == 0 || Globals.tipo == 1){
                                 System.out.println("Algo de errado aconteceu por favor reinsira os valores!");
-                                Globals.tipo = validador.Validetor(1, var.mes, var.ano);
+                                Globals.tipo = validador.Validetor(1, Globals.mes, Globals.ano);
                             }
                         }
                         switch (Globals.tipo){
@@ -97,11 +97,9 @@ public class app {
                         System.out.println("Digite o ano a ser relatado:");
                         Globals.verificados = lido.nextInt();
                         if(Globals.verifica == Globals.mes && Globals.verificados == Globals.ano){
-                            System.out.println("Safado entrou no if");
                             insere.Relatorio(flag,false);
                         }
-                        else if(Globals.verifica != Globals.mes || Globals.verificados != Globals.ano){
-                            System.out.println("Safado ta no else");
+                        else if(Globals.verifica != Globals.mes && Globals.verificados != Globals.ano || Globals.verifica != Globals.mes && Globals.verificados == Globals.ano){
                             Globals.mes = Globals.verifica;
                             Globals.ano = Globals.verificados;
                             Globals.tipo = validador.Validetor(2, var.mes, var.ano);
