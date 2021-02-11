@@ -100,6 +100,8 @@ public class app {
                             insere.Relatorio(flag,false);
                         }
                         else if(Globals.verifica != Globals.mes && Globals.verificados != Globals.ano || Globals.verifica != Globals.mes && Globals.verificados == Globals.ano){
+                            JOptionPane.showMessageDialog(frame, "Não foram identificados dados inseridos no mes/ano inserido o programa agora irá gerar dados e exibir na tela." +
+                                    " Caso haja problemas consulte readme ou manual.txt. para continuar clique em ok.");
                             Globals.mes = Globals.verifica;
                             Globals.ano = Globals.verificados;
                             Globals.tipo = validador.Validetor(2, Globals.mes, Globals.ano);

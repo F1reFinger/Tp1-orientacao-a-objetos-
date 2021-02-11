@@ -10,13 +10,14 @@ de ano regular.
 
 2 - Temperatura media: a partir dos dados inseridos na opção anterior ou nas opções de
 de relatorio ou Geração de dados e faz uma media mensal apresentando ao usuario esse
-valor.
+valor.Caso dados mensais esteja vazia opção retornará erro ou media vazia.
 
 3 - Temperatura minima: faz uma media das temperaturas mais baixas inseridas ou geradas apresentando
 ao usuario todas as temperaturas baixa e indicando o dia ao qual elas foram registradas/geradas.
+Caso dados mensais esteja vazia opção retornará erro ou minima vazia.
 
 4 - Temperatura media: apresenta todas as temperaturas maximas que foram inseridas/geradas no programa
-e apresenta os dias de registro.
+e apresenta os dias de registro.Caso dados mensais esteja vazia opção retornará erro ou maxima vazia.
 
 5 - Relatrio meteorologico: O usuario pode conferir todas as opções acima caso tenha inserido os dados do mes
 em forma de um relatrio mostrando os dados do mes do primeiro ao N-ésimo dia do mes assim como as minimas maximas
