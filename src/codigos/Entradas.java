@@ -82,9 +82,15 @@ public class Entradas {
 
 		public static void Generator(int flag){
 			Random rand = new Random();
-			System.out.println("flag: " + flag);
+			double braia;
 			for(int i = 0; i < flag; i++){
-				Globals.a[Globals.mes][i] = rand.nextInt(31);
+				if(i % 5 == 0){
+					braia = rand.nextInt(44);
+					Globals.a[Globals.mes][i] = braia * (-1);
+				}
+				else{
+					Globals.a[Globals.mes][i] = rand.nextInt(44);
+				}
 				if(Globals.a[Globals.mes][i] < Globals.minimo){
 					Globals.minimo = Globals.a[Globals.mes][i];
 				}

@@ -2,7 +2,7 @@ package codigos;
 
 public class Ano {
 	public static int MesMaior(){
-	    System.out.println("Meses com 31 dias");
+	    System.out.println("Meses que contem com 31 dias");
         return 31;
     }
     public static int MesMedio(){

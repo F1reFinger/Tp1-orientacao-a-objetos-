@@ -90,7 +90,7 @@ public class app {
                         break;
                     case 5:
 
-                        JOptionPane.showMessageDialog(frame, "Obs: essa opção pode apagar ou inserir alguns dados aleatorios." +
+                        JOptionPane.showMessageDialog(frame, "Obs: essa opção pode apagar ou inserir alguns dados aleatorios para mais informações consulte readme ou manual.txt." +
                                 " se está ciente clique em ok.");
 
                         Scanner lido = new Scanner(System.in);
@@ -128,10 +128,10 @@ public class app {
                             break;
                             case 6:
                                 Scanner leitor = new Scanner(System.in);
-                                System.out.println("Digite o mes a ser relatado:");
+                                System.out.println("Digite o mes e o ano a ser gerado respectivamente:");
                                 Globals.verifica = leitor.nextInt();
-                                System.out.println("Digite o ano a ser relatado:");
                                 Globals.verificados = leitor.nextInt();
+
                                     Globals.mes = Globals.verifica;
                                     Globals.ano = Globals.verificados;
                                     Globals.tipo = validador.Validetor(2, Globals.mes, Globals.ano);
@@ -151,7 +151,7 @@ public class app {
                                     }
                                     Globals.minimo = 100;
                                     Globals.maxima = -100;
-                                    Entradas.Generator(flag);
+                                    insere.Relatorio(flag, true);
                                 break;
 
                 }
