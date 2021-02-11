@@ -7,13 +7,11 @@ import java.util.Scanner;
 public class app {
     public static void main(String args[]){
         //variáveis de funcionamento do menu e de operações necessarias como busca;
-        int escolha = 10, flag = 0, valideiro, validado;
+        int escolha = 10, flag = 0;
 
         //entradas de funções atravez de arquivos se comunicam com a main;
         ValidaData validador = new ValidaData();
         Entradas insere = new Entradas();
-        Globals var = new Globals();
-        Ano data = new Ano();
 
         Component frame = null;
 
@@ -28,6 +26,7 @@ public class app {
             System.out.println("3 - calculo de temperatura minima.");
             System.out.println("4 - Calculo de temperatura maxima.");
             System.out.println("5 - relatorio meteorologico.");
+            System.out.println("6 - Geração aleatoria de temperatura");
             System.out.println("0 - Sair");
 
             //escaneia a operação desejada pelo usuário
@@ -35,7 +34,7 @@ public class app {
             escolha = leitura.nextInt();
 
             //condicionais para passar a responsabilidade para as funções
-            if(escolha < 0 || escolha > 5){
+            if(escolha < 0 || escolha > 6){
                 System.out.println("Não consigo identificar sua escolha");
             }else{
                 switch (escolha){
@@ -67,7 +66,6 @@ public class app {
 
                     case 2:
                         //case 2 valida o mes e o ano em questão pra procurar e calcular a media do ano;
-                        Scanner ler = new Scanner(System.in);
                         Globals.media = insere.Media(flag);
                         System.out.println("media: " + Globals.media);
                         break;
@@ -101,9 +99,9 @@ public class app {
                         System.out.println("Digite o ano a ser relatado:");
                         Globals.verificados = lido.nextInt();
                         if(Globals.verifica == Globals.mes && Globals.verificados == Globals.ano){
-                            insere.Relatorio(flag,false);
                             Globals.minimo = 100;
                             Globals.maxima = -100;
+                            insere.Relatorio(flag,false);
                         }
                         else if(Globals.verifica != Globals.mes && Globals.verificados != Globals.ano || Globals.verifica != Globals.mes && Globals.verificados == Globals.ano){
                             Globals.mes = Globals.verifica;
@@ -126,9 +124,35 @@ public class app {
                             Globals.minimo = 100;
                             Globals.maxima = -100;
                             insere.Relatorio(flag,true);
-
                         }
+                            break;
+                            case 6:
+                                Scanner leitor = new Scanner(System.in);
+                                System.out.println("Digite o mes a ser relatado:");
+                                Globals.verifica = leitor.nextInt();
+                                System.out.println("Digite o ano a ser relatado:");
+                                Globals.verificados = leitor.nextInt();
+                                    Globals.mes = Globals.verifica;
+                                    Globals.ano = Globals.verificados;
+                                    Globals.tipo = validador.Validetor(2, Globals.mes, Globals.ano);
 
+                                    switch (Globals.tipo){
+                                        case 2:
+                                            flag = Ano.Fevereiro(2);
+                                            break;
+                                        case 3:
+                                            flag = Ano.Fevereiro(3);
+                                            break;
+                                        case 4:
+                                            flag = Ano.MesMedio();
+                                            break;
+                                        case 5:
+                                            flag = Ano.MesMaior();
+                                    }
+                                    Globals.minimo = 100;
+                                    Globals.maxima = -100;
+                                    Entradas.Generator(flag);
+                                break;
 
                 }
             }

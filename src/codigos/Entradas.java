@@ -24,10 +24,9 @@ public class Entradas {
 
     	public static double Media(int tam){
 
-			Globals bruce = new Globals();
 			Globals.soma = 0;
 			for(int i = 0; i < tam; i++){
-				Globals.soma += bruce.a[Globals.mes][i];
+				Globals.soma += Globals.a[Globals.mes][i];
 			}
 			return Globals.soma/tam;
 		}
