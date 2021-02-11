@@ -92,7 +92,7 @@ public class app {
                         break;
                     case 5:
 
-                        JOptionPane.showMessageDialog(frame, "Obs: essa opção pode apagar alguns dados da operação anterior." +
+                        JOptionPane.showMessageDialog(frame, "Obs: essa opção pode apagar ou inserir alguns dados aleatorios." +
                                 " se está ciente clique em ok.");
 
                         Scanner lido = new Scanner(System.in);
@@ -123,9 +123,10 @@ public class app {
                                 case 5:
                                     flag = Ano.MesMaior();
                             }
-                            insere.Relatorio(flag,true);
                             Globals.minimo = 100;
                             Globals.maxima = -100;
+                            insere.Relatorio(flag,true);
+
                         }
 
 
