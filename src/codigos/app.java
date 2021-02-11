@@ -17,7 +17,7 @@ public class app {
 
         Component frame = null;
 
-        JOptionPane.showMessageDialog(frame, "Obs caso a opção selecionada não contenha dados eles serão gerados automaticamente" +
+        JOptionPane.showMessageDialog(frame, "Obs caso a opção selecionada não contenha dados eles serão gerados automaticamente." +
                 " para continuar clique em ok.");
 
         //rodando o menu até o ususario decidir desistir;
@@ -91,6 +91,10 @@ public class app {
                         }
                         break;
                     case 5:
+
+                        JOptionPane.showMessageDialog(frame, "Obs: essa opção pode apagar alguns dados da operação anterior." +
+                                " se está ciente clique em ok.");
+
                         Scanner lido = new Scanner(System.in);
                         System.out.println("Digite o mes a ser relatado:");
                         Globals.verifica = lido.nextInt();
@@ -98,11 +102,13 @@ public class app {
                         Globals.verificados = lido.nextInt();
                         if(Globals.verifica == Globals.mes && Globals.verificados == Globals.ano){
                             insere.Relatorio(flag,false);
+                            Globals.minimo = 100;
+                            Globals.maxima = -100;
                         }
                         else if(Globals.verifica != Globals.mes && Globals.verificados != Globals.ano || Globals.verifica != Globals.mes && Globals.verificados == Globals.ano){
                             Globals.mes = Globals.verifica;
                             Globals.ano = Globals.verificados;
-                            Globals.tipo = validador.Validetor(2, var.mes, var.ano);
+                            Globals.tipo = validador.Validetor(2, Globals.mes, Globals.ano);
 
                             switch (Globals.tipo){
                                 case 2:
@@ -118,6 +124,8 @@ public class app {
                                     flag = Ano.MesMaior();
                             }
                             insere.Relatorio(flag,true);
+                            Globals.minimo = 100;
+                            Globals.maxima = -100;
                         }
 
 
