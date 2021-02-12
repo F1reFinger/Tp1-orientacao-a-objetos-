@@ -16,7 +16,7 @@ valor.Caso dados mensais esteja vazia opção retornará erro ou media vazia.
 ao usuario todas as temperaturas baixa e indicando o dia ao qual elas foram registradas/geradas.
 Caso dados mensais esteja vazia opção retornará erro ou minima vazia.
 
-4 - Temperatura media: apresenta todas as temperaturas maximas que foram inseridas/geradas no programa
+4 - Temperatura maxima: apresenta todas as temperaturas maximas que foram inseridas/geradas no programa
 e apresenta os dias de registro.Caso dados mensais esteja vazia opção retornará erro ou maxima vazia.
 
 5 - Relatrio meteorologico: O usuario pode conferir todas as opções acima caso tenha inserido os dados do mes
