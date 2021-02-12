@@ -2,6 +2,7 @@ package codigos;
 
 import java.util.*;
 import java.util.Random;
+import java.text.DecimalFormat;
 
 public class Entradas {
 
@@ -54,6 +55,7 @@ public class Entradas {
 		}
 
 		public static void Relatorio(int tam, boolean genis){
+			DecimalFormat saida = new DecimalFormat("0.000");
 			if(genis){
 				Generator(tam);
 			}
@@ -76,7 +78,7 @@ public class Entradas {
 					System.out.println("Dia:" + (i+1) + " Maxima: " + Globals.a[Globals.mes][i]);
 				}
 			}
-			System.out.println("Media Mensal:" + Globals.media);
+			System.out.println("Media Mensal:" + saida.format(Globals.media));
 
 		}
 
